@@ -6,9 +6,13 @@
 * 이처럼 다양한 종목에 대해 선수, 팀에 대한 정보를 제공하는 서비스를 만들고자 하는 것이 목적
 
 ### 기술 stack
-* Python: 3.8 버전
+* Python: 3.9.11 버전
 * Mysql
 * ...
+
+### Python 버전 및 의존성 관리
+* pyenv -> python 버전 관리
+* poetry -> python package 의존성 및 버전 관리
 
 ### 참고 사이트
 * [Fotmob](https://www.fotmob.com/ko)

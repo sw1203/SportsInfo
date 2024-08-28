@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "sportsinfo"
+version = "0.1.0"
+description = ""
+authors = ["sw1203 <tkddnjs1203@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9.11"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
