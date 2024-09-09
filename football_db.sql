@@ -1,0 +1,41 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+CREATE SCHEMA IF NOT EXISTS `football_db` DEFAULT CHARACTER SET utf8 ;
+USE `football_db`;
+
+CREATE TABLE IF NOT EXISTS `football_db`.`teams` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `team_name` VARCHAR(100) NULL,
+  `league` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `football_db`.`players` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `back_number` INT NULL,
+  `name` VARCHAR(100) NULL,
+  `position` VARCHAR(50) NULL,
+  `birth` DATE NULL,
+  `age` INT NULL,
+  `nation` VARCHAR(50) NULL,
+  `height` FLOAT NULL,
+  `foot` ENUM('left', 'right', 'both') NULL,
+  `joined` DATE NULL,
+  `signed_from` VARCHAR(100) NULL,
+  `contract_expires` DATE NULL,
+  `market_value` DECIMAL(10,2) NULL,
+  `team_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_players_team_id_idx` (`team_id` ASC) VISIBLE,
+  CONSTRAINT `fk_players_team_id`
+    FOREIGN KEY (`team_id`)
+    REFERENCES `football_db`.`teams` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+) ENGINE = InnoDB;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
